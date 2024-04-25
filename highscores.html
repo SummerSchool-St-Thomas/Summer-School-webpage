@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>High Scores</title>
+    <style>
+        .return-button{
+            border-radius: 10px;
+            background-color: green;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            color: white;
+            text-decoration: none;
+            
+        }
+        h1{
+            text-align: center;
+            text-decoration:underline rebeccapurple;
+
+        }
+        .clear
+            {
+                border-radius: 10px;
+                background-color:red;
+                border: none;
+                padding: 10px 20px;
+                cursor: pointer;
+                color: white;
+                text-decoration: none;
+                
+            }
+            
+        
+    </style>
+</head>
+<body bgcolor="mistyrose">
+    <h1>High Scores</h1>
+    <div id="high-scores-container"></div>
+
+    <script>
+        // Retrieve and display high scores from localStorage
+        let highscores = JSON.parse(window.localStorage.getItem("highscores")) || [];
+        let highScoresContainer = document.getElementById("high-scores-container");
+
+        // Loop through highscores and display them
+        highscores.forEach(function(score) {
+            let scoreElement = document.createElement("div");
+            scoreElement.textContent = score.name + ": " + score.score;
+            highScoresContainer.appendChild(scoreElement);
+        });
+
+    </script>
+
+<button class="return-button" onclick="window.location.href='quiz.html'">Return to quiz</button>
+</body>
+</html>
