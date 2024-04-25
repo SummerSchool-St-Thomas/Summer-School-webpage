@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>                                                                                                                                                                                                                                                                         
+    <div class="panel">
+        <h1>Quiz Application Using JavaScript</h1>
+        <div class="question" id="ques"></div>
+        <div class="options" id="opt"></div>
+        <button onclick="checkAns()" id="btn">SUBMIT</button>
+        <div id="score"></div>
+        <script>
+            // Define an array to store the questions and options
+            var questions = [
+                {
+                    question: "1. Array is ______ datatype in C Programming language.",
+                    options: ["Derived Data type", "Primitive Data type", "Custom Data type", "None of these"],
+                    answer: "Derived Data type"
+                },
+                {
+                    question: "2. When double is converted to float, the value is?",
+                    options: ["Rounded", "Truncated", "Depends on the standard", "Depends on the compiler"],
+                    answer: "Depends on the compiler"
+                },
+                {
+                    question: "3. Which of the following is not a data type?",
+                    options: ["Symbolic Data", "Alphanumeric Data", "Numeric Data", "Alphabetic Data"],
+                    answer: "Symbolic Data"
+                },
+                {
+                    question: "4. *@Ac# is a type of ________________ data.",
+                    options: ["Symbolic", "Alphanumeric", "Alphabetic", "Numeric"],
+                    answer: "Symbolic"
+                },
+                {
+                    question: "5. What are the entities whose values can be changed called?",
+                    options: ["Constants", "Variables", "Modules", "Tokens"],
+                    answer: "Variables"
+                },
+                {
+                    question: "6. BOOLEAN is a type of data type which basically gives a tautology or fallacy.",
+                    options: ["True", "False"],
+                    answer: "True"
+                },
+                {
+                    question: "7. ______________ define how the locations can be used.",
+                    options: ["Data types", "Attributes", "Links", "Data Objects"],
+                    answer: "Attributes"
+                },
+                {
+                    question: "8. Which is correct with respect to size of the datatypes?",
+                    options: ["char > int > float", "int > char > float", "char < int < double", "double > char > int"],
+                    answer: "char < int < double"
+                },
+                {
+                    question: "9. Which of the datatypes have size that is variable?",
+                    options: ["int", "struct", "float", "double"],
+                    answer: "struct"
+                },
+                {
+                    question: "10. What is short int in C programming?",
+                    options: ["Basic data type of C", "Qualifier", "short is the qualifier and int is the basic datatype", "All of the mentioned"],
+                    answer: "short is the qualifier and int is the basic datatype"
+                },
+                {
+                    question: "11. In C#, a single-line comment starts with _____",
+                    options: ["//", "\\", "#", "$"],
+                    answer: "//"
+                },
+                {
+                    question: "12. Multiline comment is created using ____",
+                    options: ["//", "/* */", "< !-- -- >", "all of these"],
+                    answer: "/* */"
+                },
+                {
+                    question: "13. Which of the following is not a correct variable type?",
+                    options: ["real", "float", "int", "double"],
+                    answer: "float"
+                },
+                {
+                    question: "14. Single Line Comment // is also called.",
+                    options: ["C++ Style Comment", "Java Style Comment", "PHP Style Comment", "All the above"],
+                    answer: "All the above"
+                },
+                {
+                    question: "15. Each statement in a C program should end with.",
+                    options: ["Semicolon ;", "Colon :", "Period . (dot symbol)", "None of the these"],
+                    answer: "Semicolon ;"
+                },
+                {
+                    question: "16. What is the difference between a declaration and a definition of a variable?",
+                    options: ["Both can occur multiple times, but a declaration must occur first.", "A definition occurs once, but a declaration may occur many times.", "A declaration occurs once, but a definition may occur many times.", "There is no difference between them.", "Both can occur multiple times, but a definition must occur first"],
+                    answer: "A declaration occurs once, but a definition may occur many times."
+                },
+                {
+                    question: "17. C Programs are used in .?",
+                    options: ["Any Electronic device which works on some logic and Operating System.", "Washing machine", "Fridge, Microwave Ovens", "All the above."],
+                    answer: "All the above."
+                },
+                {
+                    question: "18. Which of the following is not a valid C token?",
+                    options: ["123", "if", "3.14", "@"],
+                    answer: "123"
+                },
+                {
+                    question: "19. In C, which token is used to represent the end of a statement?",
+                    options: ["Period (.)", "Semicolon (;)", "Comma (,)", "Colon (:)"],
+                    answer: "Semicolon (;)"
+                },
+                {
+                    question: "20. Which of the following is not a valid identifier in C?",
+                    options: ["_myVar", "1Var", "myVar2", "MyVar"],
+                    answer: "1Var"
+                },
+                {
+                    question: "21. What is the output of the following C code snippet?\n#include <stdio.h>\nint main() {\n    int x = 5, y = 10;\n    printf(\"%d\", x+++y);\n    return 0;\n}",
+                    options: ["15", "16", "20", "Compilation error"],
+                    answer: "Compilation error"
+                },
+                {
+                    question: "22. Which of the following is a unary operator in C?",
+                    options: ["+", "&&", "%", "/"],
+                    answer: "+"
+                },
+                {
+                    question: "23. What does the following C statement do?\nz = x-- - --y;",
+                    options: ["Decrements x by 1 and decrements y by 1, then assigns the difference to z.", "Decrements x by 1 and decrements y by 1, then subtracts y from x and assigns the result to z.", "Subtracts y from x and assigns the result to z, then decrements x by 1 and decrements y by 1.", "None of the above."],
+                    answer: "Decrements x by 1 and decrements y by 1, then subtracts y from x and assigns the result to z."
+                },
+                {
+                    question: "24. Which of the following is a relational operator in C?",
+                    options: ["%", "&&", "==", "++"],
+                    answer: "=="
+                },
+                {
+                    question: "25. What is the output of the following C code snippet?\n#include <stdio.h>\nint main() {\n    int a = 5, b = 7;\n    printf(\"%d\", a > b ? a : b);\n    return 0;\n}",
+                    options: ["5", "7", "Compilation error", "Runtime error"],
+                    answer: "7"
+                },
+                {
+                    question: "26. What is the correct format specifier for printing a floating-point number in C?",
+                    options: ["%f", "%d", "%s", "%c"],
+                    answer: "%f"
+                },
+                {
+                    question: "27. How do you print the address of a variable in C?",
+                    options: ["%address", "&variable", "%p", "%addr"],
+                    answer: "%p"
+                },
+                {
+                    question: "28. What is the output of the following C code snippet?\n#include <stdio.h>\nint main() {\n    int x = 10;\n    printf(\"The value of x is %d\\n\", x);\n    return 0;\n}",
+                    options: ["The value of x is 10", "The value of x is %d", "The value of x is", "Compilation error"],
+                    answer: "The value of x is 10"
+                },
+                {
+                    question: "29. How do you print a single character in C?",
+                    options: ["%s", "%d", "%c", "%f"],
+                    answer: "%c"
+                },
+                {
+                    question: "30. What is the output of the following C code snippet?\n#include <stdio.h>\nint main() {\n  char ch = 'A';\n printf(\"%c\\n\", ch + 32);\n    return 0;\n}",
+                    options: ["A", "a", "Compilation error", "Runtime error"],
+                    answer: "a"
+                },
+                
+                // Add more questions here...
+            ];
+
+            // Function to load questions
+            function loadQuestion() {
+                var currentQuestion = questions[currentQuestionIndex];
+                document.getElementById("ques").innerHTML = currentQuestion.question;
+                var optionsHTML = "";
+                for (var i = 0; i < currentQuestion.options.length; i++) {
+                    optionsHTML += `<input type="radio" name="option" value="${currentQuestion.options[i]}">${currentQuestion.options[i]}<br>`;
+                }
+                document.getElementById("opt").innerHTML = optionsHTML;
+            }
+
+            // Initialize current question index
+            var currentQuestionIndex = 0;
+
+            // Load first question
+            loadQuestion();
+
+            // Function to check answer
+            function checkAns() {
+                var selectedOption = document.querySelector('input[name="option"]:checked');
+                if (!selectedOption) {
+                    alert("Please select an option.");
+                    return;
+                }
+                if (selectedOption.value === questions[currentQuestionIndex].answer) {
+                    // Increment score if the answer is correct
+                    score++;
+                }
+                currentQuestionIndex++;
+                if (currentQuestionIndex < questions.length) {
+                    loadQuestion();
+                } else {
+                    // Display score when all questions are answered
+                    document.getElementById("score").innerHTML = "Your Score: " + score + "/" + questions.length;
+                    document.getElementById("btn").style.display = "none";
+            }
+        }
+
+            // Variable to store the score
+            var score = 0;
+        </script>
+    </div>
+</body>
+
+</html>
